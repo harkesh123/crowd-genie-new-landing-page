@@ -1,0 +1,286 @@
+/* ---------------------------------------------------------
+   Crowd Genie design tokens — 3-state theme contract:
+   bare :root = light, media query = system dark (unless an
+   explicit light choice wins), [data-theme] = explicit toggle
+--------------------------------------------------------- */
+
+:root {
+  --bg: #faf6f0;
+  --surface: #ffffff;
+  --surface-2: #f2e9f7;
+  --surface-3: #efe7da;
+  --ink: #241c30;
+  --ink-soft: #5e5569;
+  --ink-faint: #8a8092;
+  --purple-900: #3b1554;
+  --purple-700: #662d91;
+  --purple-600: #7a3aa8;
+  --purple-500: #8c51c4;
+  --purple-200: #e4d2ee;
+  --purple-100: #f1e6f7;
+  --gold-600: #a8792a;
+  --gold-500: #c08a2e;
+  --gold-200: #edd9ae;
+  --border: #e6dccb;
+  --border-soft: #efe7da;
+  --success: #2e7d5b;
+  --success-bg: #e1efe7;
+  --danger: #b3432d;
+  --danger-bg: #f6e1da;
+  --shadow: 0 1px 2px rgba(59, 21, 84, 0.06), 0 12px 32px -16px rgba(59, 21, 84, 0.18);
+  --focus-ring: #8c51c4;
+
+  /* Fixed "always-dark" brand surfaces (footer, highlight cards, auth art,
+     primary buttons, avatar chips) — deliberately NOT redefined per theme,
+     because these always carry fixed white text/icons and must keep
+     contrast in both themes rather than flipping light in dark mode. */
+  --deep-surface: #3b1554;
+  --deep-surface-2: #662d91;
+  --deep-surface-3: #8c51c4;
+  --deep-surface-hover: #4e2270;
+  --deep-gold: #a8792a;
+  --deep-surface-text: #f1e6f7;
+  --deep-surface-text-dim: rgba(241, 230, 247, 0.8);
+
+  /* Spacing scale — 4px base unit. Every margin/padding/gap in the app
+     should resolve to one of these, so rhythm stays consistent page
+     to page instead of drifting into arbitrary one-off pixel values. */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+  --space-9: 48px;
+  --space-10: 64px;
+  --space-11: 80px;
+  --space-12: 96px;
+
+  /* Type scale — fixed sizes for UI text, clamp() pairs for headings.
+     Six steps total for running text/labels (was 18 ad hoc values). */
+  --text-xs: 11px;
+  --text-sm: 13px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-lg: 21px;
+  --text-xl: 25px;
+  --h4-size: clamp(19px, 2vw, 22px);
+  --h3-size: clamp(22px, 2.6vw, 27px);
+  --h2-size: clamp(28px, 3.8vw, 40px);
+  --h1-size: clamp(36px, 5.2vw, 56px);
+  --tracking-eyebrow: 0.09em;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1b1521;
+    --surface: #241c2c;
+    --surface-2: #2e2338;
+    --surface-3: #2a2331;
+    --ink: #f3eef8;
+    --ink-soft: #c7bcd3;
+    --ink-faint: #948ba1;
+    --purple-900: #eeddf7;
+    --purple-700: #b27cdd;
+    --purple-600: #a56ad1;
+    --purple-500: #9257be;
+    --purple-200: #3c2e48;
+    --purple-100: #332740;
+    --gold-600: #e3b65b;
+    --gold-500: #d9a94d;
+    --gold-200: #4a3b22;
+    --border: #3a3140;
+    --border-soft: #332b39;
+    --success-bg: #1f3229;
+    --danger: #e39c86;
+    --danger-bg: #4a2a22;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+    --focus-ring: #c9a6e8;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #1b1521;
+  --surface: #241c2c;
+  --surface-2: #2e2338;
+  --surface-3: #2a2331;
+  --ink: #f3eef8;
+  --ink-soft: #c7bcd3;
+  --ink-faint: #948ba1;
+  --purple-900: #eeddf7;
+  --purple-700: #b27cdd;
+  --purple-600: #a56ad1;
+  --purple-500: #9257be;
+  --purple-200: #3c2e48;
+  --purple-100: #332740;
+  --gold-600: #e3b65b;
+  --gold-500: #d9a94d;
+  --gold-200: #4a3b22;
+  --border: #3a3140;
+  --border-soft: #332b39;
+  --success-bg: #1f3229;
+  --danger: #e39c86;
+  --danger-bg: #4a2a22;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 20px 40px -20px rgba(0, 0, 0, 0.6);
+  --focus-ring: #c9a6e8;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  font-size: var(--text-base);
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Newsreader", Georgia, serif;
+  color: var(--purple-900);
+  text-wrap: balance;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: var(--h1-size);
+}
+h2 {
+  font-size: var(--h2-size);
+}
+h3 {
+  font-size: var(--h3-size);
+}
+h4 {
+  font-size: var(--h4-size);
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+}
+
+/* Shared eyebrow/kicker label — was redefined with slightly different
+   values in four separate page stylesheets. */
+.kicker {
+  display: block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--gold-600);
+  margin-bottom: var(--space-4);
+  font-weight: 600;
+}
+
+/* Shared lead paragraph under a heading. */
+.lede {
+  margin-top: var(--space-4);
+  color: var(--ink-soft);
+  font-size: var(--text-md);
+  line-height: 1.65;
+  max-width: 58ch;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+.mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  background: var(--deep-surface-2);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  z-index: 200;
+  font-size: 13px;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+@media (max-width: 480px) {
+  .wrap {
+    padding-inline: 16px;
+  }
+}
+

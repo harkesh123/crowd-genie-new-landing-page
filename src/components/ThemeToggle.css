@@ -1,0 +1,43 @@
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 3px;
+  background: var(--surface);
+  flex: none;
+}
+
+.theme-toggle button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  width: 30px;
+  height: 26px;
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.theme-toggle button:hover {
+  color: var(--purple-700);
+}
+
+.theme-toggle button.active {
+  background: var(--deep-surface-2);
+  color: #fff;
+}
+
+.theme-toggle button.active:hover {
+  color: #fff;
+}
+
+.theme-toggle button svg {
+  width: 14px;
+  height: 14px;
+}

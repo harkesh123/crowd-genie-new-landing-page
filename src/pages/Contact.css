@@ -1,0 +1,108 @@
+.contact-page {
+  padding-block: var(--space-10) var(--space-11);
+}
+
+.contact-intro {
+  max-width: 640px;
+}
+
+.contact-sub {
+  margin-top: var(--space-4);
+  color: var(--ink-soft);
+  font-size: var(--text-md);
+  line-height: 1.6;
+}
+
+.contact-sub a {
+  color: var(--purple-700);
+  font-weight: 600;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+@media (max-width: 760px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-status {
+  min-height: 20px;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--success);
+  font-weight: 600;
+}
+
+.contact-info {
+  background: var(--deep-surface);
+  color: var(--deep-surface-text);
+  padding: var(--space-7) var(--space-6);
+  border-radius: 16px;
+  align-self: start;
+}
+
+.info-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin-bottom: var(--space-6);
+}
+
+.info-row .k {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  color: var(--gold-500);
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.info-row .v {
+  font-size: var(--text-base);
+  color: var(--deep-surface-text);
+  text-decoration: none;
+}
+
+.info-row a.v:hover {
+  text-decoration: underline;
+}
+
+.office-card {
+  margin-top: var(--space-3);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.oc-bg {
+  fill: rgba(255, 255, 255, 0.03);
+}
+.oc-road {
+  stroke: rgba(255, 255, 255, 0.14);
+}
+.oc-pin {
+  fill: var(--gold-500);
+}
+.oc-pin-dot {
+  fill: var(--deep-surface);
+}
+
+.office-card svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.office-card p {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.6);
+  padding: var(--space-3);
+}

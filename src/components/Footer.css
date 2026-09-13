@@ -1,0 +1,96 @@
+.site-footer {
+  background: var(--deep-surface);
+  color: var(--deep-surface-text);
+  padding-block: var(--space-9) var(--space-7);
+  margin-top: var(--space-10);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: var(--space-7);
+}
+
+.footer-brand .brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: "Newsreader", serif;
+  font-weight: 700;
+  font-size: var(--text-md);
+  color: var(--deep-surface-text);
+}
+
+.footer-brand p {
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  opacity: 0.85;
+  max-width: 32ch;
+}
+
+.site-footer nav,
+.site-footer > .wrap.footer-grid > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.site-footer h2 {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--gold-500);
+  margin-bottom: var(--space-3);
+  font-weight: 600;
+}
+
+.site-footer nav a,
+.site-footer p {
+  font-size: var(--text-sm);
+  color: var(--deep-surface-text);
+  opacity: 0.85;
+  text-decoration: none;
+  margin-bottom: var(--space-2);
+}
+
+.site-footer nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.footer-legal {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.footer-legal p {
+  font-size: var(--text-xs);
+  opacity: 0.55;
+  max-width: 82ch;
+  margin-bottom: var(--space-3);
+  line-height: 1.6;
+}
+
+.footer-legal-title {
+  font-weight: 600;
+  opacity: 0.75 !important;
+  font-size: var(--text-sm) !important;
+}
+
+.footer-copyright {
+  opacity: 0.45 !important;
+  margin-top: var(--space-2);
+}
+
+@media (max-width: 760px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

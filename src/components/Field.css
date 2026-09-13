@@ -1,0 +1,62 @@
+.field {
+  margin-bottom: var(--space-5);
+}
+
+.field label {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--ink-faint);
+  margin-bottom: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: var(--space-4);
+  font-size: var(--text-base);
+  font-family: "Inter", sans-serif;
+  color: var(--ink);
+  background: var(--surface);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--ink-faint);
+}
+
+.field input:focus-visible,
+.field textarea:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 1px;
+  border-color: var(--purple-500);
+}
+
+.field input.has-error,
+.field textarea.has-error {
+  border-color: var(--danger);
+}
+
+.field-hint {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--ink-faint);
+}
+
+.field-error {
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--danger);
+  font-weight: 600;
+}

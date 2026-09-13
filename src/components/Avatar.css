@@ -1,0 +1,74 @@
+.avatar {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Newsreader", serif;
+  font-size: clamp(20px, 3.4vw, 27px);
+  font-weight: 600;
+  color: #fff;
+}
+
+.avatar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.35) 1.5px, transparent 1.5px);
+  background-size: 14px 14px;
+  background-position: -4px -4px;
+  opacity: 0.5;
+}
+
+.avatar::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 40%;
+  opacity: 0.9;
+}
+
+.avatar span {
+  position: relative;
+  z-index: 1;
+}
+
+.avatar-v1 {
+  background: var(--deep-surface-2);
+}
+.avatar-v1::after {
+  background: var(--deep-surface);
+  top: -38%;
+  left: -30%;
+}
+
+.avatar-v2 {
+  background: var(--deep-gold);
+}
+.avatar-v2::after {
+  background: var(--deep-surface-2);
+  bottom: -42%;
+  right: -26%;
+}
+
+.avatar-v3 {
+  background: var(--deep-surface-3);
+}
+.avatar-v3::after {
+  background: var(--deep-gold);
+  top: -30%;
+  right: -36%;
+}
+
+.avatar-v4 {
+  background: var(--deep-surface);
+}
+.avatar-v4::after {
+  background: var(--deep-surface-3);
+  bottom: -36%;
+  left: -28%;
+}

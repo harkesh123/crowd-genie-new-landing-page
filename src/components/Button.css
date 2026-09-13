@@ -1,0 +1,80 @@
+.btn {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  padding: var(--space-4) var(--space-6);
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.08s ease,
+    box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-sm {
+  padding: var(--space-3) var(--space-5);
+  font-size: var(--text-sm);
+}
+
+.btn-primary {
+  background: var(--deep-surface-2);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(59, 21, 84, 0.08), 0 8px 20px -10px color-mix(in srgb, var(--deep-surface-2) 70%, transparent);
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--deep-surface-hover);
+  box-shadow: 0 1px 2px rgba(59, 21, 84, 0.1), 0 10px 24px -10px color-mix(in srgb, var(--deep-surface-2) 80%, transparent);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: var(--purple-700);
+  color: var(--purple-700);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--purple-100);
+}
+
+.btn-dark {
+  background: var(--ink);
+  color: var(--bg);
+}
+.btn-dark:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+/* Fixed white bg + fixed purple text (not the theme-flipped --purple-700,
+   which turns light lavender in dark mode and disappears on white). Used
+   for CTAs placed on the always-dark brand surfaces, so it must hold
+   contrast in both themes rather than following the page theme. */
+.btn-light {
+  background: #fff;
+  color: var(--deep-surface-2);
+}
+.btn-light:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--deep-surface-2) 12%, white);
+}
+
+.btn-subtle {
+  background: var(--surface-2);
+  color: var(--purple-700);
+}
+.btn-subtle:hover:not(:disabled) {
+  background: var(--purple-200);
+}

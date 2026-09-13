@@ -1,0 +1,159 @@
+.stats-page {
+  padding-block: var(--space-10) var(--space-11);
+}
+
+.stats-page h1 {
+  margin-top: var(--space-2);
+}
+
+.stats-sub {
+  margin-top: var(--space-4);
+  color: var(--ink-soft);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  max-width: 60ch;
+}
+
+.stat-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-7);
+}
+
+@media (max-width: 760px) {
+  .stat-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: var(--space-5);
+  background: var(--surface-2);
+}
+
+.stat-card .big {
+  font-weight: 700;
+  font-size: var(--text-xl);
+  color: var(--purple-900);
+}
+
+.stat-card .cap {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--ink-faint);
+  margin-top: var(--space-2);
+}
+
+.chart-card {
+  margin-top: var(--space-6);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: var(--space-6);
+  background: var(--surface);
+}
+
+.chart-card h2 {
+  font-size: var(--text-base);
+  color: var(--purple-700);
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+}
+
+.chart-svg {
+  width: 100%;
+  height: auto;
+  margin-top: var(--space-3);
+}
+
+.bar {
+  fill: var(--purple-600);
+}
+
+.bar-hi {
+  fill: var(--gold-500);
+}
+
+.bar-value,
+.bar-label {
+  fill: var(--ink-faint);
+  font-size: 11px;
+}
+
+/* ---------- skeleton loading state ---------- */
+.stats-skeleton .stat-cards {
+  margin-top: 32px;
+}
+
+.skel-card {
+  overflow: hidden;
+  position: relative;
+}
+
+.skel-line {
+  border-radius: 6px;
+  background: var(--surface-3);
+  position: relative;
+  overflow: hidden;
+}
+
+.skel-line-lg {
+  height: 25px;
+  width: 70%;
+  margin-bottom: 10px;
+}
+
+.skel-line-sm {
+  height: 12px;
+  width: 50%;
+}
+
+.skel-line::after,
+.skel-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--surface) 60%, transparent), transparent);
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.chart-card.skel-card {
+  margin-top: 20px;
+}
+
+.skel-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: 150px;
+  margin-top: 24px;
+}
+
+.skel-bar {
+  flex: 1;
+  background: var(--surface-3);
+  border-radius: 6px 6px 0 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 10px;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skel-line::after,
+  .skel-bar::after {
+    animation: none;
+  }
+}

@@ -1,0 +1,23 @@
+.faqs-page {
+  padding-block: 0 var(--space-11);
+}
+
+.faqs-hero {
+  padding-block: var(--space-10) var(--space-7);
+}
+
+.faqs-hero h1 {
+  max-width: 20ch;
+}
+
+.faqs-sub {
+  margin-top: var(--space-4);
+  color: var(--ink-soft);
+  font-size: var(--text-md);
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+.faqs-panel {
+  padding-top: var(--space-3);
+}

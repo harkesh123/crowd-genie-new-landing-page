@@ -1,0 +1,444 @@
+.hero {
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-7);
+  align-items: center;
+  padding-block: var(--space-10) var(--space-8);
+}
+
+@media (max-width: 760px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding-block: var(--space-8) var(--space-6);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-grid > div:first-child > *,
+.ticker > div {
+  animation: rise-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-grid > div:first-child > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.hero-grid > div:first-child > *:nth-child(2) {
+  animation-delay: 60ms;
+}
+.hero-grid > div:first-child > *:nth-child(3) {
+  animation-delay: 120ms;
+}
+.hero-grid > div:first-child > *:nth-child(4) {
+  animation-delay: 180ms;
+}
+.hero-grid > div.hero-art {
+  animation: rise-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 120ms;
+}
+.ticker > div:nth-child(1) {
+  animation-delay: 220ms;
+}
+.ticker > div:nth-child(2) {
+  animation-delay: 260ms;
+}
+.ticker > div:nth-child(3) {
+  animation-delay: 300ms;
+}
+.ticker > div:nth-child(4) {
+  animation-delay: 340ms;
+}
+.ticker > div:nth-child(5) {
+  animation-delay: 380ms;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--text-xs);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--purple-700);
+  background: var(--purple-100);
+  border: 1px solid var(--purple-200);
+  padding: var(--space-2) var(--space-4);
+  border-radius: 100px;
+  font-weight: 600;
+}
+
+.hero h1 {
+  margin-top: var(--space-5);
+  max-width: 14ch;
+}
+
+.hero-sub {
+  margin-top: var(--space-4);
+  color: var(--ink-soft);
+  max-width: 48ch;
+  font-size: var(--text-md);
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.hero-art {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-art svg {
+  width: 100%;
+  height: auto;
+  max-width: 320px;
+}
+
+.fx-ring-bg {
+  fill: var(--purple-100);
+}
+.fx-ring-line {
+  stroke: var(--purple-200);
+}
+.fx-bar {
+  fill: var(--purple-600);
+}
+.fx-bar-hi {
+  fill: var(--gold-500);
+}
+.fx-connector {
+  stroke: var(--purple-900);
+}
+.fx-dot {
+  fill: var(--gold-500);
+}
+.fx-lamp {
+  fill: var(--purple-700);
+}
+.fx-lamp-smoke {
+  stroke: var(--purple-700);
+}
+.fx-lamp-core {
+  fill: var(--gold-200);
+}
+
+.ticker {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.ticker-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* A single overlay draws every divider in one paint pass, instead of each
+   cell's own border-left rounding to a different subpixel and rendering
+   as a doubled hairline on non-integer (1fr) column widths. */
+.ticker-grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    transparent 0,
+    transparent calc(20% - 1px),
+    var(--border) calc(20% - 1px),
+    var(--border) 20%
+  );
+  background-position: -1px 0;
+}
+
+.ticker-grid div {
+  padding: 20px 12px;
+  text-align: center;
+  min-width: 0;
+}
+
+.ticker-grid .num {
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--purple-900);
+  white-space: nowrap;
+}
+
+.ticker-grid .lab {
+  font-size: 16px;
+  color: var(--ink-faint);
+  margin-top: var(--space-2);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .ticker-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ticker-grid::before {
+    background-image: repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent calc(50% - 1px),
+      var(--border) calc(50% - 1px),
+      var(--border) 50%
+    );
+  }
+  .ticker-grid div:nth-child(5) {
+    grid-column: 1 / -1;
+    border-top: 1px solid var(--border);
+  }
+  .ticker-grid .num,
+  .ticker-grid .lab {
+    font-size: 13px;
+    white-space: normal;
+  }
+}
+
+.split {
+  position: relative;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Full-bleed color layer, positioned behind the .wrap-aligned content so
+   the two panels' backgrounds always meet at the exact viewport center —
+   the same point .split-inner's own 1fr/1fr columns split at, since both
+   are independently centered on the viewport. */
+.split-bg {
+  position: absolute;
+  inset: 0;
+  width: 50%;
+}
+
+.split-bg-a {
+  left: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.split-bg-b {
+  right: 0;
+  left: auto;
+  background: var(--deep-surface);
+}
+
+.split-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--space-9);
+}
+
+@media (max-width: 720px) {
+  .split-inner {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-7);
+  }
+  /* Two side-by-side halves don't make sense stacked, and their heights
+     vary with content — so on mobile the panels carry their own
+     full-width background instead of relying on a 50/50 absolute split. */
+  .split-bg-a,
+  .split-bg-b {
+    display: none;
+  }
+  .split-a {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  .split-b {
+    background: var(--deep-surface);
+  }
+}
+
+.split-a,
+.split-b {
+  padding-block: var(--space-9);
+}
+
+.split-b {
+  color: var(--deep-surface-text);
+}
+
+.split h2 {
+  color: inherit;
+  font-size: var(--text-xl);
+}
+
+.split .rate {
+  font-size: 38px;
+  font-weight: 700;
+  margin-top: var(--space-4);
+  letter-spacing: -0.01em;
+}
+
+.split .rate span {
+  font-size: var(--text-base);
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+
+.split-a .rate {
+  color: var(--gold-600);
+}
+
+.split-b .rate {
+  color: var(--gold-500);
+}
+
+.split p {
+  font-size: var(--text-base);
+  margin-top: var(--space-3);
+  opacity: 0.85;
+  max-width: 40ch;
+  line-height: 1.6;
+}
+
+.split-cta {
+  margin-top: var(--space-6);
+}
+
+.section-block {
+  padding-block: var(--space-10);
+}
+
+.step-row {
+  display: flex;
+  gap: 0;
+  margin-top: var(--space-7);
+  overflow-x: auto;
+  padding: var(--space-2) 0 var(--space-3);
+  list-style: none;
+}
+
+.step {
+  flex: 1;
+  min-width: 140px;
+  text-align: center;
+  position: relative;
+  padding: 0 var(--space-3);
+}
+
+.step .n {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--purple-100);
+  color: var(--purple-700);
+  font-weight: 700;
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-3);
+  border: 1px solid var(--purple-200);
+}
+
+.step p {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 58%;
+  width: 84%;
+  height: 1px;
+  background: var(--border);
+}
+
+.prod-section {
+  padding-block: var(--space-9) 0;
+}
+
+.prod-heading {
+  margin-bottom: var(--space-6);
+  text-align: center;
+}
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 760px) {
+  .prod-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.prod-cell {
+  background: var(--surface);
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+}
+
+.prod-cell h3 {
+  font-size: var(--text-md);
+  font-weight: 700;
+}
+
+.prod-cell .amt {
+  color: var(--gold-600);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  margin-top: var(--space-2);
+}
+
+.prod-cell p {
+  font-size: var(--text-sm);
+  color: var(--ink-faint);
+  margin-top: var(--space-2);
+  line-height: 1.5;
+}
+
+.partners h2 {
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-6);
+}
+
+.partner-list {
+  list-style: none;
+  display: flex;
+  gap: var(--space-7);
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+
+.partner-list li {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink-faint);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: var(--space-2) var(--space-4);
+}
